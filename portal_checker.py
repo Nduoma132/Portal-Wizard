@@ -36,15 +36,16 @@ import getpass
 print("\n=== ABUAD Portal Login ===")
 USERNAME = input("Enter your Portal Username: ").strip()
 PASSWORD = getpass.getpass("Enter your Portal Password: ")
+print("\n=== Telegram Notifications ===")
+print("To get your Chat ID: Message @userinfobot on Telegram")
+TELEGRAM_CHAT_ID = input("Enter your Telegram Chat ID (or press Enter to skip): ").strip()
 
 CHECK_INTERVAL_HOURS = 1
 TARGET_LEVEL = "500"
 
 # Telegram notification setup:
-# 1. Message @BotFather on Telegram to create a bot and get a BOT_TOKEN
-# 2. Message your bot, then visit https://api.telegram.org/bot<BOT_TOKEN>/getUpdates to find your chat ID.
-TELEGRAM_BOT_TOKEN = "8293518784:AAGtfdxUQ-L-Pikq2TXWcoMyyVWJh4XM1ik" # e.g. "123456789:ABCdefGHIjklmNOPQrsTUVwxyZ"
-TELEGRAM_CHAT_ID = "6174852427"   # e.g. "123456789"
+# The BOT_TOKEN stays the same so anyone can use the same bot.
+TELEGRAM_BOT_TOKEN = "8293518784:AAGtfdxUQ-L-Pikq2TXWcoMyyVWJh4XM1ik"
 
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "check_log.txt")
 # -------------------------------------------------------
