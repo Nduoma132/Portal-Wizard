@@ -33,6 +33,16 @@ LOGIN_URL = "https://portal.abuad.edu.ng/login.php"
 RESULTS_URL = "https://portal.abuad.edu.ng/ResultDetails"
 
 import getpass
+
+# Load environment variables from .env if it exists
+if os.path.exists(".env"):
+    with open(".env", "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ[k.strip()] = v.strip(' "\'')
+
 print("\n=== ABUAD Portal Login ===")
 USERNAME = input("Enter your Portal Username: ").strip()
 PASSWORD = getpass.getpass("Enter your Portal Password: ")
@@ -44,8 +54,8 @@ CHECK_INTERVAL_HOURS = 1
 TARGET_LEVEL = "500"
 
 # Telegram notification setup:
-# The BOT_TOKEN stays the same so anyone can use the same bot.
-TELEGRAM_BOT_TOKEN = "8293518784:AAGtfdxUQ-L-Pikq2TXWcoMyyVWJh4XM1ik"
+# The BOT_TOKEN is loaded securely from the .env file
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "check_log.txt")
 # -------------------------------------------------------
